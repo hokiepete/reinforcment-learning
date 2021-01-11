@@ -82,6 +82,21 @@ def standard_grid():
     g.sets(rewards, actions)
     return g
 
+def negative_grid(step_cost=-0.1):
+    g = standard_grid()
+    g.rewards.update({
+        (0, 0): step_cost,
+        (0, 1): step_cost,
+        (0, 2): step_cost,
+        (1, 0): step_cost,
+        (1, 2): step_cost,
+        (2, 0): step_cost,
+        (2, 1): step_cost,
+        (2, 2): step_cost,
+        (2, 3): step_cost,
+    })
+    return g
+
 if __name__ == '__main__':
     g = standard_grid()
     print(g)
