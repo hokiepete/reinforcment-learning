@@ -13,7 +13,7 @@ from scipy.misc import imresize
 
 MAX_EXPERIENCES = 100 #500000
 MIN_EXPERIENCES =  10 #50000
-TARGET_UPDATE_PERIOD = 10000
+TARGET_UPDATE_PERIOD = 100 #000
 IM_SIZE = 84
 K = 4
 
@@ -281,14 +281,15 @@ if __name__ == "__main__":
     hidden_layer_sizes = [512]
     gamma = 0.99
     batch_sz = 32
-    num_episodes = 3500
+    num_episodes = 100
     total_t = 0
     experience_replay_buffer = ReplayMemory()
     episode_rewards = np.zeros(num_episodes)
 
     epsilon = 1.0
     epsilon_min = 0.1
-    epsilon_change = (epsilon - epsilon_min) / 500000
+    # epsilon_change = (epsilon - epsilon_min) / 500000
+    epsilon_change = (epsilon - epsilon_min) / 10000
 
     env = gym.envs.make("Breakout-v0")
 
